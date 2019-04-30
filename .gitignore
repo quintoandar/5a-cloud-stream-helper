@@ -5,7 +5,7 @@ gradle-app.setting
 !gradle-wrapper.jar
 .gradletasknamecache
 
-# Intellij
+# IntelliJ
 .idea
 *.iws
 *.iml
