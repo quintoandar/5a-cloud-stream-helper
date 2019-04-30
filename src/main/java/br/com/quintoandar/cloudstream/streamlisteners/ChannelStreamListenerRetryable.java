@@ -1,4 +1,4 @@
-package br.com.quintoandar.cloud.stream.stream;
+package br.com.quintoandar.cloudstream.streamlisteners;
 
 public interface ChannelStreamListenerRetryable<T> extends ChannelStreamListener<T> {
     void retryExpo(T var1);
