@@ -1,12 +1,13 @@
 plugins {
     id 'java-library'
+    id 'maven-publish'
 }
 
 group 'br.com.quintoandar'
 version = '0.1.0'
 
 repositories {
-    jcenter()
+    mavenCentral()
 }
 
 dependencies {
@@ -15,6 +16,46 @@ dependencies {
     implementation 'com.google.guava:guava:27.0.1-jre'
     
     testImplementation 'junit:junit:4.12'
+}
+
+task sourcesJar(type: Jar) {
+    from sourceSets.main.allJava
+    classifier = 'sources'
+}
+
+task javadocJar(type: Jar) {
+    from javadoc
+    classifier = 'javadoc'
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            groupId = 'br.com.quintoandar'
+            artifactId = 'spring-cloud-stream-helper'
+            version = '0.1.0'
+            from components.java
+            artifact sourcesJar
+            artifact javadocJar
+
+            pom {
+                name = 'Spring Cloud Stream Helper'
+                description = 'Spring Cloud Stream helper classes '
+
+                scm {
+                    connection = 'scm:git:git@github.com:quintoandar/spring-cloud-stream-helper.git'
+                    developerConnection = 'scm:git:git@github.com:quintoandar/spring-cloud-stream-helper.git'
+                    url = 'https://github.com/quintoandar/spring-cloud-stream-helper'
+                }
+            }
+        }
+    }
+
+    repositories {
+        maven {
+            url = "$projectDir/mvn-repo"
+        }
+    }
 }
 
 jar {
