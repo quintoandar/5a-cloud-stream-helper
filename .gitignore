@@ -2,7 +2,7 @@
 .gradle
 /build/
 gradle-app.setting
-!gradle-wrapper.jar
+!gradle/wrapper/gradle-wrapper.jar
 .gradletasknamecache
 
 # IntelliJ
@@ -26,7 +26,6 @@ out/
 .mtj.tmp/
 
 # Package Files #
-*.jar
 *.war
 *.nar
 *.ear
